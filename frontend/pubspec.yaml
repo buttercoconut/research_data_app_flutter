@@ -1,20 +1,26 @@
 name: research_data_app
-description: A Flutter mobile app for managing research data in medical basic research.
+description: A mobile app for basic medical research data management.
 publish_to: "none"
 version: 1.0.0+1
 environment:
   sdk: ">=2.19.0 <3.0.0"
-
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.6
+  http: ^0.13.5
   provider: ^6.0.5
-
+  json_annotation: ^4.8.1
+  flutter_spinkit: ^5.1.0
+  cached_network_image: ^3.2.3
+  intl: ^0.18.0
+  flutter_localizations:
+    sdk: flutter
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
-
+  build_runner: ^2.4.6
+  json_serializable: ^6.6.1
 flutter:
   uses-material-design: true
+  assets:
+    - assets/

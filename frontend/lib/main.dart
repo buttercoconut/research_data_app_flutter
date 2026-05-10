@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:research_data_app/screens/research_data_list_screen.dart';
+import 'package:provider/provider.dart';
+import 'screens/home_screen.dart';
+import 'services/api_service.dart';
 
 void main() {
   runApp(const ResearchDataApp());
@@ -10,12 +12,18 @@ class ResearchDataApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Research Data App',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
+    return MultiProvider(
+      providers: [
+        Provider<ApiService>(create: (_) => ApiService()),
+      ],
+      child: MaterialApp(
+        title: 'Research Data App',
+        theme: ThemeData(
+          primarySwatch: Colors.indigo,
+        ),
+        home: const HomeScreen(),
+        debugShowCheckedModeBanner: false,
       ),
-      home: const ResearchDataListScreen(),
     );
   }
 }

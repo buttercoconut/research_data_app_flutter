@@ -1,22 +1,25 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'research_data.g.dart';
+
+@JsonSerializable()
 class ResearchData {
-  final int id;
+  final String id;
   final String title;
   final String description;
-  final DateTime date;
+  final DateTime createdAt;
+  final String researcher;
 
   ResearchData({
     required this.id,
     required this.title,
     required this.description,
-    required this.date,
+    required this.createdAt,
+    required this.researcher,
   });
 
-  factory ResearchData.fromJson(Map<String, dynamic> json) {
-    return ResearchData(
-      id: json['id'] as int,
-      title: json['title'] as String,
-      description: json['description'] as String,
-      date: DateTime.parse(json['date'] as String),
-    );
-  }
+  factory ResearchData.fromJson(Map<String, dynamic> json) =>
+      _$ResearchDataFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ResearchDataToJson(this);
 }
