@@ -1,30 +1,12 @@
-"""Domain models for research data.
+from sqlalchemy import Column, Integer, String
+from database import Base
 
-Using SQLModel (a thin wrapper around SQLAlchemy + Pydantic) for ORM and validation.
-"""
+class ResearchData(Base):
+    __tablename__ = "research_data"
 
-from datetime import datetime
-from typing import Optional
-
-from sqlmodel import Field, SQLModel
-
-class ResearchDataBase(SQLModel):
-    title: str
-    description: Optional[str] = None
-    collected_at: datetime
-    researcher: str
-
-class ResearchData(ResearchDataBase, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-
-class ResearchDataCreate(ResearchDataBase):
-    pass
-
-class ResearchDataRead(ResearchDataBase):
-    id: int
-
-class ResearchDataUpdate(SQLModel):
-    title: Optional[str] = None
-    description: Optional[str] = None
-    collected_at: Optional[datetime] = None
-    researcher: Optional[str] = None
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, index=True)
+    description = Column(String, nullable=True)
+    sample_size = Column(Integer)
+    field = Column(String)
+    field_name = Column(String)
